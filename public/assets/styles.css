@@ -1,0 +1,16 @@
+.card {
+    width:80%;
+}
+body{
+    background-image:url('/mainbg3.jpg');
+}
+
+#btnCheckIn {
+    float:left;
+    margin-left:150px;
+}
+
+#btnComplain {
+    float:right;
+    margin-right:150px;
+}

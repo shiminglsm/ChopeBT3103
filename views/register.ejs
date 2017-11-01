@@ -1,0 +1,59 @@
+<!Doctype html>
+<html>
+    <head>
+        <% include partials/head %>
+    </head>
+    <body>
+        <% include partials/header %>
+
+        <div class="row">
+        <div class="col-md-6 offset-3" style="margin-top:90px">
+                <center><h3>Sign Up for an Account</h3></center>
+           <form action="/register" method="POST" role="form" data-toggle="validator">
+                <div class="form-group">
+                    <label for="name" class="control-label">Name</label>
+                    <input type="text" name="name" class="form-control" id="name" aria-describedby="nameHelp" placeholder="Enter your name" required/>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="control-label">Email address</label>
+                    <input type="email" name="email" class="form-control" id="registerEmail" aria-describedby="emailHelp" placeholder="Enter email" 
+                    data-error="Invalid email address" required/>
+                    <div class="help-block with-errors"></div>
+                </div>
+                <div class="form-group">
+                    <label for="gender" class="control-label">Gender</label>
+                    <select name="gender" class="form-control" id="gender" required/>
+                        <option>Male</option>
+                        <option>Female</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="race" class="control-label">Race</label>
+                    <select name="race" class="form-control" id="race" required/>
+                        <option>Chinese</option>
+                        <option>Malay</option>
+                        <option>Indian</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="DOB" class="control-label">Date of Birth</label>
+                    <input type="date" name="DOB" class="form-control" id="DOB" aria-describedby="DOBHelp" placeholder="Enter your date of birth" required/>
+                </div>
+                <div class="form-group">
+                    <label for="carplate" class="control-label">Car Plate Number</label>
+                    <input type="text" name="carplate" class="form-control" id="carplate" aria-describedby="carplateHelp" placeholder="Enter your car plate number" required/>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="control-label">Password</label>
+                    <input type="password" name="password" class="form-control" id="registerPassword" placeholder="Password" data-minlength="6" required/>
+                    <div class="help-block with-errors"></div>
+                </div>
+                    <center><button id="btnRegister" type="submit" class="btn btn-primary">Register</button></center>
+                    <br>
+            </form>
+        </div>  
+    </div>
+        
+        <% include partials/scripts %>
+    </body>    
+</html>

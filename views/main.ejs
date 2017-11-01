@@ -1,0 +1,50 @@
+<!Doctype html>
+<html>
+    <head>
+        <% include partials/head %>
+        
+    </head>
+    <body>
+        <% include partials/header %>
+            <center>
+            <div class="card text-center w-50" style="margin-top:100px">
+                    <div class="card-header">
+                    <ul class="nav nav-tabs card-header-tabs">
+                        <li class="nav-item">
+                        <a class="nav-link active" href="#">Choose carpark</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link disabled" href="#">Check-In</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link disabled" href="#">Check-Out</a>
+                        </li>
+                    </ul>
+                    </div>
+                    <div class="card-body">
+                        
+                        <h4 class="card-title">Welcome!</h4>
+                        <p class="card-text">Select your desired carpark to chope a lot! At least $10 worth of credits must be in your account to begin, and nominal fee of $0.50 is required to use this service.
+                            </p>
+                        <form action="/carpark" method="POST">
+                            <label for="carpark">Select Carpark</label>
+                            <select class="form-control" id="carpark" required/>
+                                <% var keys = Object.keys(carparks) %>
+                                <% keys.forEach(function(key){ %>
+                                    <option><%= carparks[key].CarparkName %></option>
+                                <% }) %>
+                            </select>
+                            <br>
+                            <button class="btn btn-primary" type="submit">Submit</button>
+                        </form>
+                        
+                    </div>
+                    
+                </div>
+                <br>
+                <iframe src="https://bt3103shiny.shinyapps.io/bt3103/" style="border: none; width: 1000px; height: 500px"></iframe>
+            </center>
+        
+        <% include partials/scripts %>
+    </body>    
+</html>
