@@ -34,7 +34,7 @@ module.exports = function(app) {
                         //var serialnumber = snapshot.val()[key]['SerialNumber'];
                         //var details = [{SerialNumber: serialnumber}];
                         
-                        res.render('checkin', {AllocatedTime: ((new Date().getHours()+8) >23 ? new Date().getHours()+8-24 : new Date().getHours()) + ':' + (new Date().getMinutes() <10 ? '0' : '') + new Date().getMinutes() + ':' + (new Date().getSeconds() <10 ?'0' : '') + new Date().getSeconds(),
+                        res.render('checkin', {AllocatedTime: ((new Date().getHours()+8) >23 ? new Date().getHours()+8-24 : new Date().getHours()+8) + ':' + (new Date().getMinutes() <10 ? '0' : '') + new Date().getMinutes() + ':' + (new Date().getSeconds() <10 ?'0' : '') + new Date().getSeconds(),
                             LotID: snapshot.val()[key]['LotID'],
                             SerialNumber: snapshot.val()[key]['SerialNumber']});
                         break;
