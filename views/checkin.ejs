@@ -17,7 +17,7 @@
                         <a class="nav-link active" href="#">Check-In</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link" href="/checkout">Check-Out</a>
+                        <a class="nav-link disabled" href="#">Check-Out</a>
                         </li>
                     </ul>
                     </div>
@@ -28,10 +28,10 @@
                         <p class="card-text">You are allocated to: Lot <%= LotID %></p>
                         <span class="badge badge-danger">Reminder: Please be at your allocated lot and check-in within 10 minutes.</span>
                         <hr>
-                        <form>
+                        <form method="POST" action="/checkin">
                             <div class="input-group">
                                 <span class="input-group-addon" id="basic-addon1">Serial Number</span>
-                                <input type="text" class="form-control" placeholder="Enter the serial number at the lot allocated to you" aria-label="Username" aria-describedby="basic-addon1">
+                                <input id="serialnumber" type="text" class="form-control" placeholder="Enter the serial number at the lot allocated to you" aria-label="Username" aria-describedby="basic-addon1">
                             </div>
                             <br>
                             <button id="btnCheckIn" type="submit" class="btn btn-primary">Check-In</button>
@@ -46,9 +46,22 @@
         
         <% include partials/scripts %>
         <script>
-            $("#btnCheckIn").click(function(){
+            $(document).ready(function(){
+                $('#btnCheckIn').click(function(){
                 alert("You have successfully checked in! Please remember to check out before leaving to get back your partial refund of $5.50.");
+                });
+                $(function(){
+                    $('#btnCheckIn').attr('disabled', 'disabled');
+                });
+                $('input[type=text]').keyup(function(){
+                    if($('#serialnumber').val() != '') {
+                        $('#btnCheckIn').removeAttr('disabled');
+                    } else {
+                        $('#serialnumber').attr('disabled', 'disabled');
+                    }
+                });
             });
+            
         </script>
     </body>    
 </html>

@@ -6,4 +6,7 @@ module.exports = function(app) {
     app.get('/checkin', function(req,res){
         res.render('checkin');
     });
+    app.post('/checkin', function(req, res){
+        res.render('checkout');
+    })
 };
