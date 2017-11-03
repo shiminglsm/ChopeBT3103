@@ -26,7 +26,7 @@ module.exports = function(app) {
             Name : req.body.name,
             EmailAddr : email,
             Gender : req.body.gender,
-            UserRace : req.body.race,
+            Race : req.body.race,
             DOB : req.body.DOB,
             CarplateNumber : req.body.carplate,
             DateCreated : d,
