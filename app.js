@@ -33,6 +33,8 @@ var mainController = require('./controllers/mainController');
 var checkinController = require('./controllers/checkinController');
 var checkoutController = require('./controllers/checkoutController');
 var adminController = require('./controllers/adminController');
+var resetpwController = require('./controllers/resetpwController');
+var newpwController = require('./controllers/newpwController');
 
 //fire controllers
 //fire function
@@ -42,6 +44,8 @@ mainController(app);
 checkinController(app);
 checkoutController(app);
 adminController(app);
+resetpwController(app);
+newpwController(app)
 
 //listen to port
 //app.listen(3000);
