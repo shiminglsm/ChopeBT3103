@@ -18,8 +18,10 @@
   "homepage": "https://github.com/shiminglsm/ChopeBT3103#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
+    "connect-firebase": "0.0.9",
     "ejs": "^2.5.7",
     "express": "^4.16.2",
     "firebase": "^4.6.0"
-  }
+  },
+  "devDependencies": {}
 }
