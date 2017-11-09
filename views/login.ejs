@@ -17,7 +17,7 @@
                     <label for="password">Password</label>
                     <input type="password" class="form-control" id="loginPassword" placeholder="Password">
                 </div>
-                    <center><button on-click="submit" class="btn btn-primary">Login</button></center>
+                    <center><button id= "login" type="submit" class="btn btn-primary">Login</button></center>
                     <br>
             </form>
             
@@ -31,6 +31,47 @@
         </div>  
     </div>
     <% include partials/scripts %>
-        
+    <script>
+        $(document).ready(function(){
+            $('#login').click(function(){
+            alert("please wait")
+            });
+            $(function(){
+                var email = app.email;
+                var password = app.password;
+                if (!email || !password) {
+                    return console.log('email and password required');
+                }
+                // Sign in user
+            firebase.auth().signInWithEmailAndPassword(email, password)
+                .catch(function(error) {
+                // Handle Errors here.
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                console.log('signIn error', error);
+                // ...
+                });
+            });
+        });
+    </script>
     </body>    
 </html>
+<script>
+        $(document).ready(function(){
+            $('#signout').click(function(){
+            alert("signing out...")
+            });
+            $(function(){
+                firebase.auth().signOut().then(function() {
+                    console.log('Signed Out');
+                }, function(error) {
+                    console.error('Sign Out Error', error);
+                }); 
+            });
+        })();
+        // Listen to auth state changes
+        firebase.auth().onAuthStateChanged(function(user) {
+            app.user = user;
+            console.log('user', user);
+        })();
+    </script>

@@ -4,31 +4,6 @@ module.exports = function(app) {
     var urlencodedParser = bodyParser.urlencoded({extended:false});
     var firebase = require('firebase');
     var database = firebase.database(); 
-
-    app.register = function() {
-        var email = req.body.email;
-        var password = req.body.password;
-        if (!email || !password) {
-          return console.log('email and password required');
-        }
-        // Register user
-        firebase.auth().createUserWithEmailAndPassword(email, password)
-          .catch(function(error) {
-            console.log('register error', error);
-            if (error.code === 'auth/email-already-in-use') {
-              var credential = firebase.auth.EmailAuthProvider.credential(email, password);
-              app.signInWithGoogle()
-                .then(function() {
-                  firebase.auth().currentUser.link(credential)
-                    .then(function(user) {
-                      console.log("Account linking success", user);
-                    }, function(error) {
-                      console.log("Account linking error", error);
-                    });
-                });
-            }
-        });
-    };
     
     app.get('/register', function(req, res){
         res.render('register');

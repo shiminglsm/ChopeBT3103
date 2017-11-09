@@ -3,8 +3,9 @@ module.exports = function(app) {
     var bodyParser = require('body-parser');
     var urlencodedParser = bodyParser.urlencoded({extended:false});
     var firebase = require('firebase');
+
     //how to call the login button here? 
-    app.submit = function() {
+    app.login = function() {
         var email = app.email;
         var password = app.password;
         if (!email || !password) {

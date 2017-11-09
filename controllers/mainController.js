@@ -7,6 +7,7 @@ module.exports = function(app) {
     var carparkRef = database.ref('Carparks');
     var lotsRef = database.ref('Lots');
 
+
     app.get('/carpark', function(req,res){
 
         carparkRef.on('value', function(snapshot){
