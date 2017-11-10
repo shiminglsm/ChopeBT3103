@@ -2,6 +2,7 @@ module.exports = function(app) {
     
     var firebase = require('firebase');
     var database = firebase.database(); 
+    var complaintRef = database.ref('Complaints');
     
     app.get('/admin/userloyalty', function(req,res){
         res.render('admin-user');
@@ -13,6 +14,8 @@ module.exports = function(app) {
         res.render('admin-complaint');
     });
     app.get('/admin/resolvecomplaint', function(req,res){
-        res.render('resolvecomplaint');
+        complaintRef.on('value', function(snapshot){
+            res.render('resolvecomplaint', {complaints:snapshot.val(), count: 0});
+        });
     });
 };

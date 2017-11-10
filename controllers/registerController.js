@@ -32,8 +32,10 @@ module.exports = function(app) {
             DateCreated : d,
             Credit : 0, 
             Role : 'User',
-            Password : password
+            Password : password, 
+            SerialNum: ""
         });
+        
         var key = newUser.key;
         newUser.update({UserID : key});
         res.redirect('/carpark');

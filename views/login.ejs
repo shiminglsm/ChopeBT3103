@@ -52,26 +52,13 @@
                 // ...
                 });
             });
+
+                    // Listen to auth state changes
+            firebase.auth().onAuthStateChanged(function(user) {
+                app.user = user;
+                console.log('user', user);
+            });
         });
     </script>
     </body>    
 </html>
-<script>
-        $(document).ready(function(){
-            $('#signout').click(function(){
-            alert("signing out...")
-            });
-            $(function(){
-                firebase.auth().signOut().then(function() {
-                    console.log('Signed Out');
-                }, function(error) {
-                    console.error('Sign Out Error', error);
-                }); 
-            });
-        })();
-        // Listen to auth state changes
-        firebase.auth().onAuthStateChanged(function(user) {
-            app.user = user;
-            console.log('user', user);
-        })();
-    </script>

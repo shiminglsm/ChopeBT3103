@@ -2,6 +2,7 @@ module.exports = function(app) {
     
     var bodyParser = require('body-parser');
     var urlencodedParser = bodyParser.urlencoded({extended:false});
+    
     var firebase = require('firebase');
     var database = firebase.database(); 
     var carparkRef = database.ref('Carparks');
@@ -23,21 +24,14 @@ module.exports = function(app) {
         }
         else {
             var carparkid = snapshot.val().CarparkID;
-            //lotsRef.orderByChild('CarparkID').equalTo(carparkid).on("child_added", function(snapshot){
-             //   for (var i in snapshot.val()) {
-             //       console.log(i);
-             //   }
-                
-            //});
             lotsRef.on('value', function(snapshot) {
                 for (var key in snapshot.val()) {
-                    if (snapshot.val()[key]['CarparkID'] == carparkid && snapshot.val()[key]['Availability'] ==true) {
-                        //var serialnumber = snapshot.val()[key]['SerialNumber'];
-                        //var details = [{SerialNumber: serialnumber}];
-                        
+                    if (snapshot.val()[key]['CarparkID'] == carparkid && snapshot.val()[key]['Availability'] ==true) {                        
                         res.render('checkin', {AllocatedTime: ((new Date().getHours()+8) >23 ? new Date().getHours()+8-24 : new Date().getHours()+8) + ':' + (new Date().getMinutes() <10 ? '0' : '') + new Date().getMinutes() + ':' + (new Date().getSeconds() <10 ?'0' : '') + new Date().getSeconds(),
                             LotID: snapshot.val()[key]['LotID'],
                             SerialNumber: snapshot.val()[key]['SerialNumber']});
+                        //TO BE DONE: add serial number of allocated lot to user
+                        //TO BE DONE: update availability of carpark as well as lot etc
                         break;
                     }
                 }

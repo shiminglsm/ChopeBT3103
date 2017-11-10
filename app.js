@@ -45,7 +45,7 @@ checkinController(app);
 checkoutController(app);
 adminController(app);
 resetpwController(app);
-newpwController(app)
+newpwController(app);
 
 //listen to port
 //app.listen(3000);
