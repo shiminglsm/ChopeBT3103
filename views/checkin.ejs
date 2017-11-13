@@ -36,13 +36,13 @@
                         
                         <h4 class="card-title">Check-In</h4>
                         <p class="card-text">Time of Allocation: <%= AllocatedTime %></p>
-                        <p class="card-text">You are allocated to: Lot <%= LotID %></p>
+                        <p class="card-text">You are allocated to: <%= Carpark %> Lot <%=LotID %></p>
                         <span class="badge badge-danger">Reminder: Please be at your allocated lot and check-in within 10 minutes.</span>
                         <hr>
                         <form method="POST" action="/checkin">
                             <div class="input-group">
                                 <span class="input-group-addon" id="basic-addon1">Serial Number</span>
-                                <input id="serialnumber" type="text" class="form-control" placeholder="Enter the serial number at the lot allocated to you" aria-label="Username" aria-describedby="basic-addon1">
+                                <input id="serialnumber" name="serialnumber" type="text" class="form-control" placeholder="Enter the serial number at the lot allocated to you" aria-label="Username" aria-describedby="basic-addon1">
                             </div>
                             <br>
                             <button id="btnCheckIn" type="submit" class="btn btn-primary">Check-In</button>
@@ -68,7 +68,7 @@
                     if($('#serialnumber').val() != '') {
                         $('#btnCheckIn').removeAttr('disabled');
                     } else {
-                        $('#serialnumber').attr('disabled', 'disabled');
+                        $('#btnCheckIn').attr('disabled', 'disabled');
                     }
                 });
 

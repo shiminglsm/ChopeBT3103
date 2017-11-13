@@ -15,6 +15,11 @@ var express = require('express');
 //create instance of express app
 var app = express();
 
+var cookieParser = require('cookie-parser');
+var session = require('express-session');
+app.use(cookieParser());
+app.use(session({secret: 'test', saveUninitialized: true, resave: true}));
+
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
@@ -24,7 +29,6 @@ app.set('view engine', 'ejs'); //nodejs and express know to look inside views fo
 
 //static files, css, images
 app.use(express.static('./public'));
-
 
 //get whatever is on the module exports stored in here
 var loginController = require('./controllers/loginController'); //specify path to controller

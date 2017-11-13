@@ -3,6 +3,8 @@ module.exports = function(app) {
     var bodyParser = require('body-parser');
     var urlencodedParser = bodyParser.urlencoded({extended:false});
     var firebase = require('firebase');
+    var database = firebase.database();
+    var usersRef = database.ref('Users');
 
     //how to call the login button here? 
     app.login = function() {
@@ -33,7 +35,17 @@ module.exports = function(app) {
     });
 
     app.post('/', urlencodedParser, function(req,res){
- 
-         res.redirect('/carpark');
+        req.session.email = req.body.email;
+        usersRef.on('value', function(snapshot){
+            for (var key in snapshot.val()) {
+                if (snapshot.val()[key]['EmailAddr'] == req.session.email){
+                    req.session.userID = String(snapshot.val()[key]['UserID']);
+                    //console.log(req.session);
+                    res.redirect('/carpark');
+                    break;
+                }
+            }
+        });
+        
     });
 };
