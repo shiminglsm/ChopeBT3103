@@ -40,8 +40,13 @@ module.exports = function(app) {
             for (var key in snapshot.val()) {
                 if (snapshot.val()[key]['EmailAddr'] == req.session.email){
                     req.session.userID = String(snapshot.val()[key]['UserID']);
-                    //console.log(req.session);
-                    res.redirect('/carpark');
+                    req.session.role = snapshot.val()[key]['Role'];
+                    if (req.session.role == 'User') {
+                        //console.log(req.session);
+                        res.redirect('/carpark');
+                    } else {
+                        res.redirect('admin/userloyalty');
+                    }
                     break;
                 }
             }
