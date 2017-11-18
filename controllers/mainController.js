@@ -12,7 +12,7 @@ module.exports = function(app) {
     app.get('/carpark', function(req,res){
 
         carparkRef.on('value', function(snapshot){
-            res.render('main', {carparks: snapshot.val(), email: req.session.email} );
+            res.render('main', {carparks: snapshot.val(), email: req.session.email, credit:req.session.credits} );
         });
     });
 

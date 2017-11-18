@@ -38,6 +38,7 @@
                         <h4 class="card-title">Welcome <%= email %>!</h4>
                         <p class="card-text">Select your desired carpark to chope a lot! At least $10 worth of credits must be in your account to begin, and nominal fee of $0.50 is required to use this service.
                             </p>
+                        <p class="card-text">Your available credits: $<%= credit %></p>
                         <form action="/carpark" method="POST">
                             <label for="carpark">Select Carpark</label>
                             <select name="carpark" class="form-control" id="carpark" required/>

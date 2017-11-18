@@ -40,6 +40,7 @@ module.exports = function(app) {
             for (var key in snapshot.val()) {
                 if (snapshot.val()[key]['EmailAddr'] == req.session.email){
                     req.session.userID = String(snapshot.val()[key]['UserID']);
+                    req.session.credits = snapshot.val()[key]['Credit'];
                     req.session.role = snapshot.val()[key]['Role'];
                     if (req.session.role == 'User') {
                         //console.log(req.session);
