@@ -11,6 +11,7 @@
                         <ul class="nav navbar-nav">
                             <li>
                             <p class="navbar-btn" style="margin-bottom:1px">
+                                <a href="#" id = "credit" class="button btn btn-primary">Top-up Credit</a>
                                 <a href="/" id = "signout" class="button btn btn-primary">Sign Out</a>
                             </p>
                             </li>
@@ -49,9 +50,7 @@
         $('#btnCheckOut').click(function(){
             alert('You have successfully checked out!');
         });
-        $('#signout').click(function(){
-                alert("signing out...")
-                });
+
                 $(function(){
                     firebase.auth().signOut().then(function() {
                         console.log('Signed Out');

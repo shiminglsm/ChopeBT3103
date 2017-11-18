@@ -11,6 +11,7 @@
                         <ul class="nav navbar-nav">
                             <li>
                             <p class="navbar-btn" style="margin-bottom:1px">
+                                <a href="#" id = "credit" class="button btn btn-primary">Top-up Credit</a>
                                 <a href="/" id = "signout" class="button btn btn-primary">Sign Out</a>
                             </p>
                             </li>
@@ -53,15 +54,12 @@
                     
                 </div>
                 <br>
-                <iframe src="https://shiming.shinyapps.io/Chope/" style="border: none; width: 1000px; height: 500px"></iframe>
+                <iframe src="https://shiming.shinyapps.io/Chope/" style="border: none; width: 1000px; height: 550px"></iframe>
             </center>
         
         <% include partials/scripts %>
         <script>
             $(document).ready(function(){
-                $('#signout').click(function(){
-                alert("signing out...")
-                });
                 $(function(){
                     firebase.auth().signOut().then(function() {
                         console.log('Signed Out');
